@@ -53,7 +53,7 @@ app.get('/success', (req, res) => {
 });
 
 app.post('/send-texts', async (req, res) => {
-  await pendingOilChanges.forEach(async pendingOilChange => {
+  for (const pendingOilChange of pendingOilChanges) {
     if (pendingOilChange.accessToken) {
       const vehicleIds = await smartcar.getVehicleIds(pendingOilChange.accessToken);
       const vehicle = new smartcar.Vehicle(vehicleIds.vehicles[0], pendingOilChange.accessToken);
@@ -69,7 +69,7 @@ app.post('/send-texts', async (req, res) => {
         console.log(textMessage);
       }
     }
-  });
+  }
 
   res.status(204).end();
 });
