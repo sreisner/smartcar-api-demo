@@ -24,7 +24,7 @@ app.post('/register', (req, res) => {
   const { phoneNumber, mileage } = req.body;
 
   const id = uuidv1();
-  const newLength = pendingOilChanges.push({
+  pendingOilChanges.push({
     id,
     phoneNumber,
     mileage,
